@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10272e">
+  <title>RV University | Project Partner Finder</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="toast" class="toast" role="status"></div>
+
+<main id="authView" class="auth-shell">
+
+  <section class="auth-visual">
+    <div class="visual-shade"></div>
+
+   <img class="auth-logo"
+     src="Rvum-logo.png"
+     alt="RV University">
+
+    <div class="visual-copy">
+      <span class="eyebrow">RV UNIVERSITY · STUDENT COMMUNITY</span>
+      <h1>Build something<br><em>remarkable.</em></h1>
+      <p>
+        Meet curious minds, discover shared interests
+        and find the right people for your next project.
+      </p>
+    </div>
+
+    <span class="visual-foot">GO, CHANGE THE WORLD.</span>
+  </section>
+
+  <section class="auth-panel">
+    <div class="auth-card">
+
+      <img class="mobile-logo"
+           src="Rvum-logo.png"
+           alt="RV University">
+
+      <div class="auth-heading">
+        <span class="eyebrow">PROJECT PARTNER FINDER</span>
+        <h2 id="authTitle">Welcome back</h2>
+        <p id="authSubtitle">
+          Sign in to continue to your student workspace.
+        </p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="tab active" id="loginTab" type="button">
+          Login
+        </button>
+        <button class="tab" id="signupTab" type="button">
+          Create account
+        </button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+
+        <label>
+          Email address
+          <input id="loginEmail"
+                 type="email"
+                 autocomplete="email"
+                 placeholder="you@example.com"
+                 required>
+        </label>
+
+        <label>
+          Password
+          <div class="password-wrap">
+            <input id="loginPassword"
+                   type="password"
+                   autocomplete="current-password"
+                   placeholder="Enter your password"
+                   required minlength="6">
+            <button class="eye-btn" type="button" aria-label="Show password">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/><line class="slash" x1="3" y1="3" x2="21" y2="21"/></svg>
+            </button>
+          </div>
+        </label>
+
+        <button class="text-button forgot"
+                id="forgotPassword"
+                type="button">
+          Forgot password?
+        </button>
+
+       <button class="primary-btn full" type="submit">
+  Enter <span>→</span>
+</button>
+
+      </form>
+
+      <form id="signupForm" class="auth-form hidden">
+
+        <div class="field-grid">
+          <label>
+            Full name
+            <input id="signupName"
+                   type="text"
+                   placeholder="Your full name"
+                   required maxlength="70">
+          </label>
+
+          <label>
+            USN / Student ID
+            <input id="signupUsn"
+                   type="text"
+                   placeholder="Enter your USN"
+                   required maxlength="30">
+          </label>
+        </div>
+
+        <label>
+          University email
+          <input id="signupEmail"
+                 type="email"
+                 placeholder="you@example.com"
+                 required>
+        </label>
+
+        <div class="field-grid">
+          <label>
+            Department
+            <select id="signupDepartment" required>
+              <option value="">Select department</option>
+              <option>School of Engineering</option>
+              <option>School of Computer Science</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>
+            Year of study
+            <select id="signupYear" required>
+              <option value="">Select year</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Password
+          <div class="password-wrap">
+            <input id="signupPassword"
+                   type="password"
+                   placeholder="At least 6 characters"
+                   required minlength="6">
+            <button class="eye-btn" type="button" aria-label="Show password">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/><line class="slash" x1="3" y1="3" x2="21" y2="21"/></svg>
+            </button>
+          </div>
+        </label>
+
+        <button class="primary-btn full" type="submit">
+         Submit <span>→</span>
+        </button>
+
+      </form>
+
+      <p class="auth-note">
+        By continuing, you agree to use this student
+        community responsibly.
+      </p>
+
+      <p class="auth-error" id="authError"></p>
+
+    </div>
+
+    <footer class="auth-footer">
+      © <span id="yearNow"></span> RV University · Student Project Partner Finder
+    </footer>
+  </section>
+
+</main>
+
+
+<main id="appView" class="app-shell hidden">
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <img src="Rvum-logo.png"
+           alt="RV University logo">
+      <span>PROJECT PARTNER FINDER</span>
+    </div>
+
+    <div class="side-label">WORKSPACE</div>
+
+    <nav class="side-nav">
+
+      <button class="nav-link active" data-page="dashboard">
+        <span>▦</span> Dashboard
+      </button>
+
+      <button class="nav-link" data-page="school">
+        <span>⌂</span> School of Engineering
+      </button>
+
+      <button class="nav-link" data-page="students">
+        <span>♧</span> Find Students
+      </button>
+
+      <button class="nav-link" data-page="profile">
+        <span>◉</span> My Profile
+      </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <div class="signed-in">
+        <div class="avatar" id="sideAvatar">S</div>
+        <div>
+          <strong id="sideName">Student</strong>
+          <small id="sideEmail">student@email.com</small>
+        </div>
+      </div>
+
+      <button class="nav-link logout" id="logoutBtn">
+        <span>↪</span> Sign out
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <section class="main-area">
+
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <div class="topbar-title">Student workspace</div>
+
+      <div class="topbar-right">
+        <span class="status-dot"></span>
+        <span>Community portal</span>
+        <div class="top-avatar" id="topAvatar">S</div>
+      </div>
+    </header>
+
+
+    <div class="page-content">
+
+      <section class="page active" id="page-dashboard">
+
+        <div class="welcome-banner">
+
+          <div class="welcome-copy">
+            <span class="eyebrow gold">
+              RV UNIVERSITY · CONNECT & COLLABORATE
+            </span>
+
+            <h1>
+              Find your people.<br>
+              <em>Build your next big idea.</em>
+            </h1>
+
+            <p>
+              A place for students to connect,
+              share skills and create together.
+            </p>
+
+            <button class="primary-btn" data-go="students">
+              Explore students <span>→</span>
+            </button>
+          </div>
+
+          <div class="welcome-image">
+            <img src="college-photo.png"
+                 alt="RV University campus">
+          </div>
+
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">YOUR COMMUNITY</span>
+            <h2>Your workspace</h2>
+          </div>
+          <span class="muted" id="welcomeName">Welcome</span>
+        </div>
+
+        <div class="feature-grid">
+
+          <article class="feature-card feature-teal">
+            <div class="feature-icon">⌂</div>
+            <span class="eyebrow">YOUR SCHOOL</span>
+            <h3>School of Engineering</h3>
+            <p>
+              Connect with fellow engineering students,
+              explore interests and find potential project teammates.
+            </p>
+            <button class="inline-link" data-go="school">
+              Explore school →
+            </button>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon gold-icon">♧</div>
+            <span class="eyebrow">DISCOVER</span>
+            <h3>Find students</h3>
+            <p>
+              Browse student profiles and discover people
+              with skills and interests that complement yours.
+            </p>
+            <button class="inline-link" data-go="students">
+              Browse community →
+            </button>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">◉</div>
+            <span class="eyebrow">YOUR IDENTITY</span>
+            <h3>Build your profile</h3>
+            <p>
+              Share your skills, interests and project goals
+              so other students can discover you.
+            </p>
+            <button class="inline-link" data-go="profile">
+              Edit my profile →
+            </button>
+          </article>
+
+        </div>
+
+        <div class="privacy-strip">
+          <span class="privacy-icon">✓</span>
+          <div>
+            <strong>Your account belongs to you.</strong>
+            <p>
+              Only you can create or update your own student profile.
+              Account access is protected by Firebase Authentication
+              and database security rules.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+
+      <section class="page" id="page-school">
+
+        <div class="page-intro">
+          <span class="eyebrow">RV UNIVERSITY</span>
+          <h1>School of Engineering</h1>
+          <p>
+            A dedicated space for engineering students to connect,
+            collaborate and build meaningful projects.
+          </p>
+        </div>
+
+        <div class="school-hero">
+
+          <img src="college-photo.png"
+               alt="RV University campus">
+
+          <div>
+            <span class="eyebrow gold">
+              LEARN · CREATE · COLLABORATE
+            </span>
+
+            <h2>
+              Ideas become impact<br>
+              when we build together.
+            </h2>
+
+            <p>
+              Meet students across engineering disciplines
+              and discover your next collaborator.
+            </p>
+
+            <button class="primary-btn" data-go="students">
+              Meet the community →
+            </button>
+          </div>
+
+        </div>
+
+        <div class="info-grid">
+
+          <article class="info-card">
+            <span>01</span>
+            <h3>Connect</h3>
+            <p>
+              Discover peers with shared academic
+              and project interests.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <span>02</span>
+            <h3>Collaborate</h3>
+            <p>
+              Bring different strengths together
+              to work on better ideas.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <span>03</span>
+            <h3>Create</h3>
+            <p>
+              Build your profile and make your
+              project interests visible.
+            </p>
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <section class="page" id="page-students">
+
+        <div class="page-intro">
+          <span class="eyebrow">THE COMMUNITY</span>
+          <h1>Find students</h1>
+          <p>
+            Discover students and potential project collaborators.
+          </p>
+        </div>
+
+        <div class="search-row">
+          <input id="studentSearch"
+                 type="search"
+                 placeholder="Search by name, department or skill...">
+          <span id="studentCount" class="muted"></span>
+        </div>
+
+        <div id="studentGrid" class="student-grid">
+          <div class="empty-state">
+            Loading student community…
+          </div>
+        </div>
+
+      </section>
+
+
+      <section class="page" id="page-profile">
+
+        <div class="page-intro">
+          <span class="eyebrow">YOUR SPACE</span>
+          <h1>My profile</h1>
+          <p>
+            Keep your student information and interests up to date.
+          </p>
+        </div>
+
+        <form id="profileForm" class="profile-form">
+
+          <div class="profile-form-head">
+            <div class="large-avatar" id="profileAvatar">S</div>
+            <div>
+              <h2 id="profileHeading">Your student profile</h2>
+              <p class="muted">
+                You can edit only your own profile.
+              </p>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              Full name
+              <input id="profileName" required maxlength="70">
+            </label>
+
+            <label>
+              USN / Student ID
+              <input id="profileUsn"
+                     maxlength="30"
+                     placeholder="Enter your USN">
+            </label>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              Email
+              <input id="profileEmail"
+                     type="email"
+                     autocomplete="email"
+                     placeholder="you@example.com">
+            </label>
+
+            <label>
+              Department
+              <select id="profileDepartment">
+                <option>School of Engineering</option>
+                <option>School of Computer Science</option>
+                <option>Other</option>
+              </select>
+            </label>
+          </div>
+
+          <label id="emailPasswordRow" class="hidden">
+            Current password (needed to change your email)
+            <input id="profileCurrentPassword"
+                   type="password"
+                   autocomplete="current-password"
+                   placeholder="Enter your current password">
+          </label>
+
+          <label>
+            Year of study
+            <select id="profileYear">
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+            </select>
+          </label>
+
+          <label>
+            Skills (separate with commas)
+            <input id="profileSkills"
+                   placeholder="e.g. Python, UI design, robotics">
+          </label>
+
+          <label>
+            About me
+            <textarea id="profileAbout"
+                      rows="4"
+                      maxlength="500"
+                      placeholder="Tell other students a little about yourself..."></textarea>
+          </label>
+
+          <button class="primary-btn" type="submit">
+            Save my profile <span>→</span>
+          </button>
+
+          <p class="form-message" id="profileMessage"></p>
+
+        </form>
+
+      </section>
+
+    </div>
+  </section>
+</main>
+
+<script type="module" src="app.js"></script>
+
+<script>
+  document.querySelectorAll('.eye-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var input = btn.parentElement.querySelector('input');
+      var show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      btn.classList.toggle('showing', show);
+      btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+    });
+  });
+</script>
+
+</body>
+</html>
